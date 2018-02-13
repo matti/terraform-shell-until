@@ -1,31 +1,3 @@
-variable "depends_id" {
-  default = ""
-}
-
-variable "command" {
-  default = ""
-}
-
-variable "exit_status_must_equal" {
-  default = ""
-}
-
-variable "stdout_must_include" {
-  default = ""
-}
-
-variable "stdout_must_not_include" {
-  default = ""
-}
-
-variable "max_tries" {
-  default = 60
-}
-
-variable "interval" {
-  default = 1
-}
-
 data "external" "shell" {
   program = ["ruby", "${path.module}/shell.rb"]
 
@@ -38,8 +10,4 @@ data "external" "shell" {
     max_tries               = "${var.max_tries}"
     command                 = "${var.command}"
   }
-}
-
-output "result" {
-  value = "${data.external.shell.result}"
 }
